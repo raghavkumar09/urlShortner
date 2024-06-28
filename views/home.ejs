@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="urlShortner/assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Url Shortner</h1>
+        <form action="/url" method="POST">
+            <label for="longUrl">Enter Original Url</label>
+            <input type="text" name="longUrl" id="longUrl" placeholder="http://example.com">
+            <button type="submit">Generate</button>
+        </form>
+
+        <div>
+            <% if(locals.urls) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Original Url</th>
+                            <th>Short Url</th>
+                            <th>Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% urls.forEach((url, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index + 1 %>
+                                </td>
+                                <td>
+                                    <%= url.longUrl %>
+                                </td>
+                                <td>
+                                    <%= url.shortUrl %>
+                                </td>
+                                <td>
+                                    <%= url.views.length %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

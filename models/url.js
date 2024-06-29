@@ -10,9 +10,16 @@ const urlSchema = new Schema({
         type: String,
         required: true
     },
-    views: [{ timestamps: { type: Number} }]
+    views: [{ 
+        timestamps: { type: Number} 
+    }],
+    createdBy: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'users' 
+    }
 }, {
     timestamps: true
-});
+}
+);
 
 module.exports = mongoose.model('Url', urlSchema)

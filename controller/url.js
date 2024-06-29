@@ -11,7 +11,8 @@ const handleCreateUrl = async (req, res) => {
     const url = await Url.create({
         longUrl: body.longUrl,
         shortUrl: nanoid,
-        views: []
+        views: [],
+        createdBy: req.user._id
     });
     return res.render('home', { shortUrl: url.shortUrl });
     // res.json({
